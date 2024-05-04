@@ -9,3 +9,4 @@ export const allItems = {
 } as const
 
 export type ItemKey = keyof typeof allItems
+export const itemTypes = Object.keys(allItems) as ItemKey[]
