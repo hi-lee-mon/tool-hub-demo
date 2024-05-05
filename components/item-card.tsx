@@ -1,25 +1,27 @@
-import { Tag } from '@/types/tag'
+import { TagId } from '@/data/tag'
+import { getTagLabel } from '@/lib/tag'
 import Image from 'next/image'
 import Link from 'next/link'
+import { title } from 'process'
 
 export default function ItemCard({
   title,
-  tags,
+  tagIds,
   href,
-  imageURL,
+  id,
 }: {
   title: string
-  tags: Tag[]
+  tagIds: TagId[]
   href: string
-  imageURL: string
+  id: string
 }) {
   return (
-    <div className="aspect-video p-4 border rounded-md shadow-sm bg-card relative hover:shadow-lg transition duration-500">
+    <div className="p-4 border rounded-md shadow-sm bg-card relative hover:shadow-lg transition duration-500">
       <div className="aspect-video relative overflow-hidden border mb-2 rounded">
         <Image
           fill
           objectFit="cover"
-          src={imageURL}
+          src={`/tool-hub/images/${id}.png`}
           alt={title}
           objectPosition="top"
         />
@@ -31,13 +33,13 @@ export default function ItemCard({
         </Link>
       </h2>
       <div className="flex relative z-10 flex-wrap mt-2 gap-2">
-        {tags.map((tag) => (
+        {tagIds.map((tagId) => (
           <Link
-            key={tag.id}
-            href={tag.id}
+            key={tagId}
+            href={tagId}
             className="border whitespace-nowrap bg-muted rounded text-xs px-1.5 py-1 text-muted-foreground"
           >
-            {tag.label}
+            {getTagLabel(tagId)}
           </Link>
         ))}
       </div>

@@ -1,16 +1,7 @@
-import { Tag } from '@/types/tag'
+import { TagId, allTags } from '@/data/tag'
 
-export const TAGS: Tag[] = [
-  {
-    label: 'イラスト素材',
-    id: 'illusts',
-  },
-  {
-    label: '写真',
-    id: 'photos',
-  },
-  {
-    label: 'アイコン',
-    id: 'icons',
-  },
-]
+export const mainTags: TagId[] = ['illust', 'photo', 'icon']
+
+export const getTagLabel = (tagId: TagId) => {
+  return allTags.find((tag) => tag.id === tagId)?.label ?? ''
+}
