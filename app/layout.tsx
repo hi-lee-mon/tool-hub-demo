@@ -37,7 +37,9 @@ export default function RootLayout({
             <Suspense>
               <Sidebar />
             </Suspense>
-            <div className="flex-1 bg-muted/30">{children}</div>
+            <div className="flex-1 bg-muted/30">
+              <Suspense>{children}</Suspense>
+            </div>
           </main>
           <Footer />
         </ThemeProvider>
